@@ -29,7 +29,7 @@ if (opsys === "win32" || opsys === "win64") {
 const startServer = async (from) => {
 create('Imperial', serverOption)
         .then(client => {
-            console.log('[DEV] Red Emperor')
+            console.log('[DEV] ASNJRY')
             console.log('[SERVER] Server Started!')
 
             // Force it to keep the current session
@@ -62,7 +62,7 @@ async function msgHandler (client, message) {
             switch (cmd[0]) {
                 case '#menu':
                 case '#help':
-                    client.sendText(from, 'Menu: \n1. #sticker / #stiker: kirim gambar dengan caption atau balas gambar yang sudah dikirim. \n2. #sticker / #stiker spasi url gambar (contoh: #stiker https://instagram.com/asnjry) \n3. #tiktok spasi url (contoh: #tiktok https://www.tiktok.com/@asnjry/video/685521...) \n4. #fb url(conroh: #fb https://www.facebook.com/asnjry/videos/56547...) \nJangan lupa follow ig gw @asnjry')
+                    client.sendText(from, 'Menu: \n1. #sticker / #stiker: kirim gambar dengan caption atau balas gambar yang sudah dikirim. \n2. #sticker / #stiker spasi url gambar (contoh: #stiker https://instagram.com/asnjry) \n3. #tiktok spasi url (contoh: #tiktok https://www.tiktok.com/@asnjry/video/685521...) \n4. #fb url(conroh: #fb https://www.facebook.com/asnjry/videos/56547...) \n\nJangan lupa follow ig gw @asnjry  ')
                     break
                 case '#sticker':
                 case '#stiker':
@@ -95,7 +95,7 @@ async function msgHandler (client, message) {
                             .then((videoMeta) => {
                                 const filename = videoMeta.authorMeta.name + '.mp4'
                                 client.sendFile(from, videoMeta.videobase64, filename, videoMeta.NoWaterMark ? '' : '⚠ Video tanpa watermark tidak tersedia.')
-                                    .then(() => client.sendText(from, `Metadata:\nUsername: ${videoMeta.authorMeta.name} \nMusic: ${videoMeta.musicMeta.musicName} \nView: ${videoMeta.playCount.toLocaleString()} \nLike: ${videoMeta.diggCount.toLocaleString()} \nComment: ${videoMeta.commentCount.toLocaleString()} \nShare: ${videoMeta.shareCount.toLocaleString()} \nCaption: ${videoMeta.text.trim() ? videoMeta.text : '-'} \n\nFollow Instagram gw @asnjry//saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`))
+                                    .then(() => client.sendText(from, `Metadata:\nUsername: ${videoMeta.authorMeta.name} \nMusic: ${videoMeta.musicMeta.musicName} \nView: ${videoMeta.playCount.toLocaleString()} \nLike: ${videoMeta.diggCount.toLocaleString()} \nComment: ${videoMeta.commentCount.toLocaleString()} \nShare: ${videoMeta.shareCount.toLocaleString()} \nCaption: ${videoMeta.text.trim() ? videoMeta.text : '-'} \n\nFollow Instagram gw @asnjry `))
                                     .catch(err => console.log('Caught exception: ', err))
                             }).catch((err) => {
                                 client.sendText(from, 'Gagal mengambil metadata, link yang kamu kirim tidak valid')
@@ -119,7 +119,7 @@ async function msgHandler (client, message) {
                                             client.sendText(from, `Error, ` + err)
                                         });
                                 }
-                                client.sendText(from, `Link Download:\n${content.join('\n')} \n\nFollow Instagram gw @asnjry//saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`)
+                                client.sendText(from, `Link Download:\n${content.join('\n')} \n\nFollow Instagram gw @asnjry `)
                             }).catch((err) => {
                                 console.error(err)
                                 if (err == 'Not a video') return client.sendText(from, `Error, tidak ada video di link yang kamu kirim`)
@@ -138,7 +138,7 @@ async function msgHandler (client, message) {
                                     const content = videoMeta.splice(videoMeta.findIndex(x => x.content_type !== 'video/mp4'), 1).sort((a, b) => b.bitrate - a.bitrate)
                                     const result = await urlShortener(content[0].url)
                                     console.log('Shortlink: ' + result.shortLink)
-                                    client.sendText(from, `Link Download: ${result.shortLink} \n\nFollow Instagram gw @asnjry//saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`)
+                                    client.sendText(from, `Link Download: ${result.shortLink} \n\nFollow Instagram gw @asnjry `)
                                 } catch (err) {
                                     client.sendText(from, `Error, ` + err)
                                 }
@@ -161,7 +161,7 @@ async function msgHandler (client, message) {
                                         console.log('Shortlink: ' + shorthd.shortLink)
                                         const shortsd = await urlShortener(sd)
                                         console.log('Shortlink: ' + shortsd.shortLink)
-                                        client.sendText(from, `Link Download: \nHD Quality: ${shorthd.shortLink} \nSD Quality: ${shortsd.shortLink} \n\nFollow Instagram gw @asnjry//saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`)
+                                        client.sendText(from, `Link Download: \nHD Quality: ${shorthd.shortLink} \nSD Quality: ${shortsd.shortLink} \n\nFollow Instagram gw @asnjry `)
                                     } catch (err) {
                                         client.sendText(from, `Error, ` + err)
                                     }

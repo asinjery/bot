@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Whatsapp Bot - sticker creator
 
 ## Getting Started
@@ -31,3 +32,6 @@ after running it you need to scan the qr
 ### Troubleshooting
 Make sure all the necessary dependencies are installed.
 https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+=======
+# botwa
+>>>>>>> d4dcb1e8debe856ab0c5250aa4ab2489351eb77a
